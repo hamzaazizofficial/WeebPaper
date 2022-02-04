@@ -64,6 +64,7 @@ class HomeScreen : AppCompatActivity() {
     private fun onArrowUpClicked() {
         setVisibility(fabClicked)
         setAnimation(fabClicked)
+        setFabClickable(fabClicked)
         fabClicked = !fabClicked
     }
 
@@ -86,6 +87,16 @@ class HomeScreen : AppCompatActivity() {
         } else {
             binding.fabSave.visibility = View.INVISIBLE
             binding.fabShare.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun setFabClickable(fabClicked: Boolean) {
+        if (!fabClicked) {
+            binding.fabSave.isClickable = false
+            binding.fabShare.isClickable = false
+        } else {
+            binding.fabSave.isClickable = true
+            binding.fabShare.isClickable = true
         }
     }
 
