@@ -67,4 +67,18 @@
         app:layout_constraintBottom_toTopOf="@id/fabSave"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSetWallpaer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:backgroundTint="#DB68EF"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/wallpaper"
+        android:tint="#FFEB3B"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/fabShare"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
