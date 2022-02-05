@@ -56,8 +56,11 @@ class HomeScreen : AppCompatActivity() {
         showWallpaper()
 
         binding.fabArrow.setOnClickListener {
-//            showWallpaper()
             onArrowUpClicked()
+        }
+
+        binding.fabShare.setOnClickListener {
+            showWallpaper()
         }
     }
 
@@ -92,11 +95,11 @@ class HomeScreen : AppCompatActivity() {
 
     private fun setFabClickable(fabClicked: Boolean) {
         if (!fabClicked) {
-            binding.fabSave.isClickable = false
-            binding.fabShare.isClickable = false
-        } else {
             binding.fabSave.isClickable = true
             binding.fabShare.isClickable = true
+        } else {
+            binding.fabSave.isClickable = false
+            binding.fabShare.isClickable = false
         }
     }
 
