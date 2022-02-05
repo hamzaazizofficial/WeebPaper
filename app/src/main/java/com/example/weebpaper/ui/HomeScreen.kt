@@ -1,5 +1,7 @@
 package com.example.weebpaper.ui
 
+import android.app.WallpaperManager
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
@@ -11,10 +13,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.transition.Transition
 import com.example.weebpaper.R
 import com.example.weebpaper.databinding.ActivityHomeScreenBinding
 import com.example.weebpaper.model.ApiModel
+import com.google.android.material.snackbar.Snackbar
+import java.io.IOException
 
 class HomeScreen : AppCompatActivity() {
 
@@ -59,8 +65,26 @@ class HomeScreen : AppCompatActivity() {
             onArrowUpClicked()
         }
 
-        binding.fabShare.setOnClickListener {
-            showWallpaper()
+        binding.fabSetWallpaer.setOnClickListener {
+            Glide.with(this).asBitmap().load(currentImgUrl).into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(
+                    resource: Bitmap,
+                    transition: Transition<in Bitmap>?
+                ) {
+                    val wallpaperManager = WallpaperManager.getInstance(applicationContext)
+                    Snackbar.make(binding.root, "Wallpaper set successfully", Snackbar.LENGTH_LONG)
+                        .show()
+                    try {
+                        wallpaperManager.setBitmap(resource)
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
     }
 
@@ -76,10 +100,12 @@ class HomeScreen : AppCompatActivity() {
             binding.fabArrow.startAnimation(rotateOpen)
             binding.fabSave.startAnimation(fromBottom)
             binding.fabShare.startAnimation(fromBottom)
+            binding.fabSetWallpaer.startAnimation(fromBottom)
         } else {
             binding.fabArrow.startAnimation(rotateClose)
             binding.fabSave.startAnimation(toBottom)
             binding.fabShare.startAnimation(toBottom)
+            binding.fabSetWallpaer.startAnimation(toBottom)
         }
     }
 
@@ -87,9 +113,11 @@ class HomeScreen : AppCompatActivity() {
         if (!fabClicked) {
             binding.fabSave.visibility = View.VISIBLE
             binding.fabShare.visibility = View.VISIBLE
+            binding.fabSetWallpaer.visibility = View.VISIBLE
         } else {
             binding.fabSave.visibility = View.INVISIBLE
             binding.fabShare.visibility = View.INVISIBLE
+            binding.fabSetWallpaer.visibility = View.INVISIBLE
         }
     }
 
@@ -97,9 +125,11 @@ class HomeScreen : AppCompatActivity() {
         if (!fabClicked) {
             binding.fabSave.isClickable = true
             binding.fabShare.isClickable = true
+            binding.fabSetWallpaer.isClickable = true
         } else {
             binding.fabSave.isClickable = false
             binding.fabShare.isClickable = false
+            binding.fabSetWallpaer.isClickable = false
         }
     }
 
