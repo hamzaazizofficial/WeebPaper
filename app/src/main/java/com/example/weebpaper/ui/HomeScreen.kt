@@ -1,9 +1,14 @@
 package com.example.weebpaper.ui
 
 import android.app.WallpaperManager
+import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -20,7 +25,11 @@ import com.example.weebpaper.R
 import com.example.weebpaper.databinding.ActivityHomeScreenBinding
 import com.example.weebpaper.model.ApiModel
 import com.google.android.material.snackbar.Snackbar
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStream
+
 
 class HomeScreen : AppCompatActivity() {
 
@@ -86,6 +95,74 @@ class HomeScreen : AppCompatActivity() {
                 }
             })
         }
+
+//        binding.fabShare.setOnClickListener { showWallpaper() }
+
+        binding.fabShare.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.putExtra(
+                Intent.EXTRA_TEXT, "Check out this wallpaper" +
+                        "! $currentImgUrl"
+            )
+            intent.type = "text/plain"
+            val shareIntent = Intent.createChooser(intent, "Share this WallPaper")
+            startActivity(shareIntent)
+        }
+
+        binding.fabSave.setOnClickListener {
+            saveImage()
+        }
+    }
+
+    private fun saveImage() {
+        Glide.with(this).asBitmap().load(currentImgUrl).into(object : CustomTarget<Bitmap>() {
+            override fun onResourceReady(
+                resource: Bitmap,
+                transition: Transition<in Bitmap>?
+            ) {
+                val albumName = "WeebPaper"
+                val filename = "${System.currentTimeMillis()}.png"
+                val write: (OutputStream) -> Boolean = {
+                    resource.compress(Bitmap.CompressFormat.PNG, 100, it)
+                }
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    val contentValues = ContentValues().apply {
+                        put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+                        put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
+                        put(
+                            MediaStore.MediaColumns.RELATIVE_PATH,
+                            "${Environment.DIRECTORY_DCIM}/$albumName"
+                        )
+                    }
+
+                    application.contentResolver.let {
+                        it.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                            ?.let { uri ->
+                                it.openOutputStream(uri)?.let(write)
+                            }
+                    }
+                    Snackbar.make(binding.root, "Saved to Galley!", Snackbar.LENGTH_LONG)
+                        .show()
+                } else {
+                    val imagesDir =
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
+                            .toString() + File.separator + albumName
+                    val file = File(imagesDir)
+                    if (!file.exists()) {
+                        file.mkdir()
+                    }
+                    val image = File(imagesDir, filename)
+                    write(FileOutputStream(image))
+                    Snackbar.make(binding.root, "Saved to Galley!", Snackbar.LENGTH_LONG)
+                        .show()
+                }
+            }
+
+            override fun onLoadCleared(placeholder: Drawable?) {
+
+            }
+        })
     }
 
     private fun onArrowUpClicked() {
