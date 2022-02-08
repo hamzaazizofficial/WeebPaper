@@ -63,16 +63,27 @@ class HomeScreen : AppCompatActivity() {
         )
     }
 
+    private val arrowFabSize: Animation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.arrow_fab_size
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         apiViewModel = ViewModelProvider(this)[ApiModel::class.java]
+        binding.fabArrow.startAnimation(arrowFabSize)
+        setFabTransparency()
         showWallpaper()
 
         binding.fabArrow.setOnClickListener {
             onArrowUpClicked()
         }
+
+        binding.fabNext.setOnClickListener { showWallpaper() }
 
         binding.fabSetWallpaer.setOnClickListener {
             Glide.with(this).asBitmap().load(currentImgUrl).into(object : CustomTarget<Bitmap>() {
@@ -96,8 +107,6 @@ class HomeScreen : AppCompatActivity() {
             })
         }
 
-//        binding.fabShare.setOnClickListener { showWallpaper() }
-
         binding.fabShare.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
             intent.putExtra(
@@ -112,6 +121,14 @@ class HomeScreen : AppCompatActivity() {
         binding.fabSave.setOnClickListener {
             saveImage()
         }
+    }
+
+    private fun setFabTransparency() {
+        binding.fabNext.alpha = 0.45f
+        binding.fabArrow.alpha = 0.45f
+        binding.fabSave.alpha = 0.45f
+        binding.fabShare.alpha = 0.45f
+        binding.fabSetWallpaer.alpha = 0.45f
     }
 
     private fun saveImage() {
