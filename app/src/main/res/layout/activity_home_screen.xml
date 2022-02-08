@@ -32,24 +32,24 @@
         android:id="@+id/fabNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="28dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="#FFFFFFFF"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/next"
-        android:backgroundTint="#FFFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:backgroundTint="#FFFFFFFF"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/arrow_up"
-        android:backgroundTint="#FFFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
