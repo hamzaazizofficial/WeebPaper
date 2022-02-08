@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,14 +29,27 @@
         app:layout_constraintTop_toTopOf="@id/imgView" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/next"
+        android:backgroundTint="#FFFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabArrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/arrow_up"
-        android:tint="#FFEB3B"
+        android:backgroundTint="#FFFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -43,12 +57,12 @@
         android:id="@+id/fabSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:backgroundTint="#DB68EF"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#FFFFFFFF"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/download"
-        android:tint="#FFEB3B"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/fabArrow"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -57,12 +71,12 @@
         android:id="@+id/fabShare"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:backgroundTint="#DB68EF"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#FFFFFFFF"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/share"
-        android:tint="#FFEB3B"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/fabSave"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -71,14 +85,16 @@
         android:id="@+id/fabSetWallpaer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:backgroundTint="#DB68EF"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#FFFFFFFF"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/wallpaper"
-        android:tint="#FFEB3B"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/fabShare"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
