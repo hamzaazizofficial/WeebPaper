@@ -159,7 +159,7 @@ class HomeScreen : AppCompatActivity() {
                                 it.openOutputStream(uri)?.let(write)
                             }
                     }
-                    Snackbar.make(binding.root, "Saved to Galley!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root, "Saved to Gallery!", Snackbar.LENGTH_LONG)
                         .show()
                 } else {
                     val imagesDir =
