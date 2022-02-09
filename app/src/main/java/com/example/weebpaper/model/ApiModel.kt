@@ -12,7 +12,7 @@ class ApiModel(application: Application) : AndroidViewModel(application) {
     //    lateinit var currentImgUrl: String
     fun loadMeme(onSuccess: (JSONObject) -> Unit) {
         val queue = Volley.newRequestQueue(getApplication())
-        val url = "https://meme-api.herokuapp.com/gimme/animeart"
+        val url = "https://meme-api.herokuapp.com/gimme/imaginarysliceoflife"
 
         // Request a string response from the provided URL.
         val jsonObjectRequest = JsonObjectRequest(
