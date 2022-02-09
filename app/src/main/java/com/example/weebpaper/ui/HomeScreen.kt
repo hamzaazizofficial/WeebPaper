@@ -126,9 +126,9 @@ class HomeScreen : AppCompatActivity() {
     private fun setFabTransparency() {
         binding.fabNext.alpha = 0.45f
         binding.fabArrow.alpha = 0.45f
-        binding.fabSave.alpha = 0.45f
-        binding.fabShare.alpha = 0.45f
-        binding.fabSetWallpaer.alpha = 0.45f
+        binding.fabSave.alpha = 0.60f
+        binding.fabShare.alpha = 0.60f
+        binding.fabSetWallpaer.alpha = 0.60f
     }
 
     private fun saveImage() {
