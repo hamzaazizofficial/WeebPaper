@@ -3,10 +3,10 @@
     <style name="Theme.WeebPaper" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/lightgray</item>
+        <item name="colorPrimaryVariant">#D5D5D5</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#F0B7FA</item>
+        <item name="colorSecondary">@color/pink_100</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
