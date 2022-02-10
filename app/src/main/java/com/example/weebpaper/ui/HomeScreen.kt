@@ -30,7 +30,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
 
-
+@Suppress("DEPRECATION")
 class HomeScreen : AppCompatActivity() {
 
     lateinit var binding: ActivityHomeScreenBinding
@@ -124,11 +124,11 @@ class HomeScreen : AppCompatActivity() {
     }
 
     private fun setFabTransparency() {
-        binding.fabNext.alpha = 0.45f
-        binding.fabArrow.alpha = 0.45f
-        binding.fabSave.alpha = 0.60f
-        binding.fabShare.alpha = 0.60f
-        binding.fabSetWallpaer.alpha = 0.60f
+        binding.fabNext.alpha = 0.75f
+        binding.fabArrow.alpha = 0.75f
+        binding.fabSave.alpha = 0.70f
+        binding.fabShare.alpha = 0.70f
+        binding.fabSetWallpaer.alpha = 0.70f
     }
 
     private fun saveImage() {
@@ -159,8 +159,7 @@ class HomeScreen : AppCompatActivity() {
                                 it.openOutputStream(uri)?.let(write)
                             }
                     }
-                    Snackbar.make(binding.root, "Saved to Gallery!", Snackbar.LENGTH_LONG)
-                        .show()
+                    Snackbar.make(binding.root, "Saved to Gallery!", Snackbar.LENGTH_LONG).show()
                 } else {
                     val imagesDir =
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
