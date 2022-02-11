@@ -9,7 +9,6 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 class ApiModel(application: Application) : AndroidViewModel(application) {
-    //    lateinit var currentImgUrl: String
     fun loadMeme(onSuccess: (JSONObject) -> Unit) {
         val queue = Volley.newRequestQueue(getApplication())
         val url = "https://meme-api.herokuapp.com/gimme/imaginarysliceoflife"

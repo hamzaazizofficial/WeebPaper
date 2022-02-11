@@ -14,7 +14,8 @@
         android:theme="@style/Theme.WeebPaper">
         <activity
             android:name="com.example.weebpaper.ui.HomeScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
