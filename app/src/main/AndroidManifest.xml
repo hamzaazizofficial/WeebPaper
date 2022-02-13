@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeebPaper">
         <activity
-            android:name="com.example.weebpaper.ui.HomeScreen"
+            android:name="com.example.weebpaper.ui.HomeActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

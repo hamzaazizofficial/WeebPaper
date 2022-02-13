@@ -23,7 +23,6 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.example.weebpaper.R
 import com.example.weebpaper.databinding.ActivityHomeScreenBinding
-import com.example.weebpaper.model.ApiModel
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.io.FileOutputStream
@@ -31,11 +30,11 @@ import java.io.IOException
 import java.io.OutputStream
 
 @Suppress("DEPRECATION")
-class HomeScreen : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityHomeScreenBinding
     private var currentImgUrl: String = ""
-    lateinit var apiViewModel: ApiModel
+    lateinit var apiViewModel: HomeViewModel
     private var fabClicked = false
 
     private val rotateOpen: Animation by lazy {
@@ -74,7 +73,7 @@ class HomeScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        apiViewModel = ViewModelProvider(this)[ApiModel::class.java]
+        apiViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.fabArrow.startAnimation(arrowFabSize)
         setFabTransparency()
         showWallpaper()
@@ -258,6 +257,6 @@ class HomeScreen : AppCompatActivity() {
 
     private fun showWallpaper() {
         binding.progressBar.visibility = View.VISIBLE
-        apiViewModel.loadWallpaper("https://meme-api.herokuapp.com/gimme/imaginarysliceoflife")
+        apiViewModel.loadWallpaper(subredditName = "imaginarySliceOfLife")
     }
 }
