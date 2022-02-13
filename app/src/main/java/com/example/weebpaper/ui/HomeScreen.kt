@@ -121,6 +121,36 @@ class HomeScreen : AppCompatActivity() {
         binding.fabSave.setOnClickListener {
             saveImage()
         }
+
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        apiViewModel.imageUrl.observe(this) { imageUrl ->
+            currentImgUrl = imageUrl
+            Glide.with(this).load(currentImgUrl).listener(object : RequestListener<Drawable> {
+                override fun onLoadFailed(
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.progressBar.visibility = View.GONE
+                    return false
+                }
+
+                override fun onResourceReady(
+                    resource: Drawable?,
+                    model: Any?,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource?,
+                    isFirstResource: Boolean
+                ): Boolean {
+                    binding.progressBar.visibility = View.GONE
+                    return false
+                }
+            }).into(binding.imgView)
+        }
     }
 
     private fun setFabTransparency() {
@@ -228,30 +258,6 @@ class HomeScreen : AppCompatActivity() {
 
     private fun showWallpaper() {
         binding.progressBar.visibility = View.VISIBLE
-        apiViewModel.loadMeme(onSuccess = { response ->
-            currentImgUrl = response.getString("url")
-            Glide.with(this).load(currentImgUrl).listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    binding.progressBar.visibility = View.GONE
-                    return false
-                }
-
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    binding.progressBar.visibility = View.GONE
-                    return false
-                }
-            }).into(binding.imgView)
-        })
+        apiViewModel.loadWallpaper("https://meme-api.herokuapp.com/gimme/imaginarysliceoflife")
     }
 }
