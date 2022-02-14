@@ -23,6 +23,7 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.example.weebpaper.R
 import com.example.weebpaper.databinding.ActivityHomeScreenBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.io.FileOutputStream
@@ -36,6 +37,10 @@ class HomeActivity : AppCompatActivity() {
     private var currentImgUrl: String = ""
     lateinit var apiViewModel: HomeViewModel
     private var fabClicked = false
+    private var selectedSubreddit: String = "imaginarySliceOfLife"
+    private var selectedSubredditIndex: Int = 0
+    private val subreddits =
+        arrayOf("imaginarySliceOfLife", "animeArt", "animePhoneWallpapers", "animeWallpapersSfw")
 
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -76,13 +81,17 @@ class HomeActivity : AppCompatActivity() {
         apiViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.fabArrow.startAnimation(arrowFabSize)
         setFabTransparency()
-        showWallpaper()
+        showWallpaper(selectedSubreddit)
+
+        binding.selectSubredditButton.setOnClickListener {
+            selectSubredditDialog()
+        }
 
         binding.fabArrow.setOnClickListener {
             onArrowUpClicked()
         }
 
-        binding.fabNext.setOnClickListener { showWallpaper() }
+        binding.fabNext.setOnClickListener { showWallpaper(selectedSubreddit) }
 
         binding.fabSetWallpaer.setOnClickListener {
             Glide.with(this).asBitmap().load(currentImgUrl).into(object : CustomTarget<Bitmap>() {
@@ -122,6 +131,20 @@ class HomeActivity : AppCompatActivity() {
         }
 
         observeViewModel()
+    }
+
+    private fun selectSubredditDialog() {
+        selectedSubreddit = subreddits[selectedSubredditIndex]
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Select Subreddit")
+            .setSingleChoiceItems(subreddits, selectedSubredditIndex) { dialog_, which ->
+                selectedSubredditIndex = which
+                selectedSubreddit = subreddits[which]
+                showWallpaper(selectedSubreddit)
+                Snackbar.make(binding.root, "$selectedSubreddit selected!", Snackbar.LENGTH_SHORT).show()
+                dialog_.dismiss()
+            }
+            .show()
     }
 
     private fun observeViewModel() {
@@ -255,8 +278,8 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun showWallpaper() {
+    private fun showWallpaper(selectedSubreddit: String) {
         binding.progressBar.visibility = View.VISIBLE
-        apiViewModel.loadWallpaper(subredditName = "imaginarySliceOfLife")
+        apiViewModel.loadWallpaper(subredditName = selectedSubreddit)
     }
 }
