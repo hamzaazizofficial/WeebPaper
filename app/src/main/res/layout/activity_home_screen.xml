@@ -103,4 +103,13 @@
         app:layout_constraintBottom_toTopOf="@id/fabShare"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/selectSubredditButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="14dp"
+        android:src="@drawable/repeating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
