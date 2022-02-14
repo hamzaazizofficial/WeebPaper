@@ -37,10 +37,10 @@ class HomeActivity : AppCompatActivity() {
     private var currentImgUrl: String = ""
     lateinit var apiViewModel: HomeViewModel
     private var fabClicked = false
-    private var selectedSubreddit: String = "imaginarySliceOfLife"
+    private var selectedSubreddit: String = "animePhoneWallpapers"
     private var selectedSubredditIndex: Int = 0
     private val subreddits =
-        arrayOf("imaginarySliceOfLife", "animeArt", "animePhoneWallpapers", "animeWallpapersSfw")
+        arrayOf("animePhoneWallpapers", "animeWallpapersSfw", "imaginarySliceOfLife", "animeArt")
 
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -141,7 +141,6 @@ class HomeActivity : AppCompatActivity() {
                 selectedSubredditIndex = which
                 selectedSubreddit = subreddits[which]
                 showWallpaper(selectedSubreddit)
-                Snackbar.make(binding.root, "$selectedSubreddit selected!", Snackbar.LENGTH_SHORT).show()
                 dialog_.dismiss()
             }
             .show()

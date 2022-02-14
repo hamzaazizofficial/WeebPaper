@@ -105,10 +105,10 @@
 
     <ImageView
         android:id="@+id/selectSubredditButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_margin="14dp"
-        android:src="@drawable/repeating"
+        android:src="@drawable/reddit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
