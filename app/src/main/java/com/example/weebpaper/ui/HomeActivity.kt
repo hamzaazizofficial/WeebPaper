@@ -80,7 +80,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         apiViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.fabArrow.startAnimation(arrowFabSize)
-        setFabTransparency()
         showWallpaper(selectedSubreddit)
 
         binding.selectSubredditButton.setOnClickListener {
@@ -172,14 +171,6 @@ class HomeActivity : AppCompatActivity() {
                 }
             }).into(binding.imgView)
         }
-    }
-
-    private fun setFabTransparency() {
-        binding.fabNext.alpha = 0.75f
-        binding.fabArrow.alpha = 0.75f
-        binding.fabSave.alpha = 0.70f
-        binding.fabShare.alpha = 0.70f
-        binding.fabSetWallpaer.alpha = 0.70f
     }
 
     private fun saveImage() {
