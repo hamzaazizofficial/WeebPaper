@@ -80,7 +80,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         apiViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.fabArrow.startAnimation(arrowFabSize)
-        setFabTransparency()
         showWallpaper(selectedSubreddit)
 
         binding.selectSubredditButton.setOnClickListener {
@@ -174,14 +173,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun setFabTransparency() {
-        binding.fabNext.alpha = 0.75f
-        binding.fabArrow.alpha = 0.75f
-        binding.fabSave.alpha = 0.70f
-        binding.fabShare.alpha = 0.70f
-        binding.fabSetWallpaer.alpha = 0.70f
-    }
-
     private fun saveImage() {
         Glide.with(this).asBitmap().load(currentImgUrl).into(object : CustomTarget<Bitmap>() {
             override fun onResourceReady(
@@ -245,6 +236,7 @@ class HomeActivity : AppCompatActivity() {
             binding.fabSave.startAnimation(fromBottom)
             binding.fabShare.startAnimation(fromBottom)
             binding.fabSetWallpaer.startAnimation(fromBottom)
+
         } else {
             binding.fabArrow.startAnimation(rotateClose)
             binding.fabSave.startAnimation(toBottom)
@@ -262,6 +254,7 @@ class HomeActivity : AppCompatActivity() {
             binding.fabSave.visibility = View.INVISIBLE
             binding.fabShare.visibility = View.INVISIBLE
             binding.fabSetWallpaer.visibility = View.INVISIBLE
+            this.fabClicked = true
         }
     }
 
