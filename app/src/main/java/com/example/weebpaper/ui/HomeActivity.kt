@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -40,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
     private var selectedSubreddit: String = "animePhoneWallpapers"
     private var selectedSubredditIndex: Int = 0
     private val subreddits =
-        arrayOf("animePhoneWallpapers", "animeWallpapersSfw", "imaginarySliceOfLife", "animeArt")
+        arrayOf("imaginarySliceOfLife", "animePhoneWallpapers", "animeWallpapersSfw", "animeArt")
 
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
@@ -201,7 +202,7 @@ class HomeActivity : AppCompatActivity() {
                                 it.openOutputStream(uri)?.let(write)
                             }
                     }
-                    Snackbar.make(binding.root, "Saved to Gallery!", Snackbar.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, "Saved to Gallery!", Snackbar.LENGTH_SHORT).show()
                 } else {
                     val imagesDir =
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
@@ -212,7 +213,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                     val image = File(imagesDir, filename)
                     write(FileOutputStream(image))
-                    Snackbar.make(binding.root, "Saved to Galley!", Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root, "Saved to Gallery!", Snackbar.LENGTH_SHORT)
                         .show()
                 }
             }
