@@ -16,6 +16,7 @@ Android App based on MVVM Architecture which shows random anime images from some
 - Set Wallaper
 - Share Wallpaper
 - Select Subreddit 
+- Zoom Image
 
 ## Libraries
 
