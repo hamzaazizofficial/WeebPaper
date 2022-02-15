@@ -1,5 +1,5 @@
 # WeebPaper
-Android App which shows random anime wallpapers from some famous subreddits like **r/animeArt**, **r/imaginarySliceOfLife**, **r/animePhoneWallpapers**, **animeWallpapersSfw**.
+Android App which shows random anime wallpapers from some famous subreddits like **r/animeArt**, **r/imaginarySliceOfLife**, **r/animePhoneWallpapers** and **animeWallpapersSfw**.
 
 ## Screenshots
 
@@ -10,6 +10,12 @@ Android App which shows random anime wallpapers from some famous subreddits like
   
   <img src="https://github.com/hamzaazizofficial/RandomMeme/blob/master/app/src/main/res/drawable/WhatsApp%20Image%202021-12-06%20at%2015.32.53%20(3).jpg" width="250" height="492"/>
 </div>
+
+## Features
+- Save Wallpaper
+- Set Wallaper
+- Share Wallpaper
+- Select Subreddit 
 
 ## Libraries
 
