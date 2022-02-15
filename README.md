@@ -1,6 +1,4 @@
 # WeebPaper
-<hr>
-
 Android App which shows random anime wallpapers from some famous subreddits like **r/animeArt**, **r/imaginarySliceOfLife**, **r/animePhoneWallpapers**, **animeWallpapersSfw**.
 
 ## Screenshots
