@@ -4,11 +4,17 @@ Android App based on MVVM Architecture which shows random anime images from some
 ## Screenshots
 
 <div class="column">
-  <img src="https://github.com/hamzaazizofficial/RandomMeme/blob/master/app/src/main/res/drawable/WhatsApp%20Image%202021-12-06%20at%2015.32.53%20(1).jpg" width="250" height="492" />
+  <img src="https://github.com/hamzaazizofficial/WeebPaper/blob/master/one.PNG?raw=true" width="250" height="492" />
 
-  <img src="https://github.com/hamzaazizofficial/RandomMeme/blob/master/app/src/main/res/drawable/WhatsApp%20Image%202021-12-06%20at%2015.32.53%20(2).jpg" width="250" height="492" />
+  <img src="https://github.com/hamzaazizofficial/WeebPaper/blob/master/two.PNG?raw=true" width="250" height="492" />
   
-  <img src="https://github.com/hamzaazizofficial/RandomMeme/blob/master/app/src/main/res/drawable/WhatsApp%20Image%202021-12-06%20at%2015.32.53%20(3).jpg" width="250" height="492"/>
+  <img src="https://github.com/hamzaazizofficial/WeebPaper/blob/master/three.PNG?raw=true" width="250" height="492"/>
+  
+  <img src="https://github.com/hamzaazizofficial/WeebPaper/blob/master/four.PNG?raw=true" width="250" height="492"/>
+  
+  <img src="https://github.com/hamzaazizofficial/WeebPaper/blob/master/five.PNG?raw=true" width="250" height="492"/>
+  
+  <img src="https://github.com/hamzaazizofficial/WeebPaper/blob/master/six.PNG?raw=true" width="250" height="492"/>
 </div>
 
 ## Features
