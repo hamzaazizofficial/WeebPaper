@@ -236,7 +236,6 @@ class HomeActivity : AppCompatActivity() {
             binding.fabSave.startAnimation(fromBottom)
             binding.fabShare.startAnimation(fromBottom)
             binding.fabSetWallpaer.startAnimation(fromBottom)
-
         } else {
             binding.fabArrow.startAnimation(rotateClose)
             binding.fabSave.startAnimation(toBottom)
@@ -254,7 +253,6 @@ class HomeActivity : AppCompatActivity() {
             binding.fabSave.visibility = View.INVISIBLE
             binding.fabShare.visibility = View.INVISIBLE
             binding.fabSetWallpaer.visibility = View.INVISIBLE
-            this.fabClicked = true
         }
     }
 
