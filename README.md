@@ -1,5 +1,5 @@
 # WeebPaper
-Android App based on MVVM Architecture which shows random anime images from some famous subreddits like **r/animeArt**, **r/imaginarySliceOfLife**, **r/animePhoneWallpapers** and **animeWallpapersSfw**.
+An Android App based on MVVM Architecture which shows random anime images from some famous subreddits like **r/animeArt**, **r/imaginarySliceOfLife**, **r/animePhoneWallpapers** and **animeWallpapersSfw**.
 
 ## Screenshots
 
